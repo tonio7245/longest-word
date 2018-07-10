@@ -1,5 +1,6 @@
 import random
 import string
+import requests
 
 
 class Game:
@@ -18,5 +19,11 @@ class Game:
                 letters.remove(letter)
             else:
                 return False
-        return True
+        return self.verify_word_exist(word)
 
+    def verify_word_exist(self,word):
+        r = requests.get('https://wagon-dictionary.herokuapp.com/' + word)
+        return r.json()['found']
+
+game = Game()
+print(str(game.verify_word_exist('test')))
