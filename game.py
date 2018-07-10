@@ -25,5 +25,3 @@ class Game:
         r = requests.get('https://wagon-dictionary.herokuapp.com/' + word)
         return r.json()['found']
 
-game = Game()
-print(str(game.verify_word_exist('test')))
