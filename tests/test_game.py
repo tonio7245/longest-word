@@ -29,3 +29,8 @@ class TestGame(unittest.TestCase):
         new_game.grid = ['B','R','O','U','I','L','L','E','R']
         self.assertTrue(new_game.is_valid('BROUILLER'))
 
+    def test_unknown_word_is_invalid(self):
+      new_game = Game()
+      new_game.grid = list('KWIENFUQW') # Force the grid to a test case:
+      self.assertIs(new_game.is_valid('FEUN'), False)
+
